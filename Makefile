@@ -1,4 +1,6 @@
-.PHONY: docs test
+.ONESHELL:
+
+.PHONY: clean install tests run all
 
 help:
 	@echo "  env         create a development environment using virtualenv"
@@ -7,19 +9,47 @@ help:
 	@echo "  lint        check style with flake8"
 	@echo "  test        run all your tests using py.test"
 
+clean:
+	find . -type f -name '*.pyc' -delete
+	find . -type f -name '*.log' -delete
+	find . | grep -E "(__pycache__|\.pyc|\.DS_Store|\.db|\.pyo$\)" | xargs rm -rf
+
+
 env:
-	python3 -m venv env && \
-	. env/bin/activate && \
-	make deps
+python3 -m venv env && \
+. env/bin/activate && \
+#make deps
+
+install:
+	virtualenv venv; \
+	. venv/bin/activate; \
+	pip install -r requirements.txt;
 
 deps:
-	pip install -r requirements.txt
+. venv/bin/activate; \
+pip install -r requirements.txt
 
-clean:
-	find . | grep -E "(__pycache__|\.pyc|\.DS_Store|\.db|\.pyo$\)" | xargs rm -rf
+tests:
+	. venv/bin/activate; \
+	python manage.py test
+	#py.test tests
 
 lint:
 	flake8 --exclude=env .
+	
+	
+run:
+	. venv/bin/activate; \
+	python manage.py run
 
-test:
-	py.test tests
+all: clean install tests run
+
+
+
+
+
+
+
+
+
+
