@@ -1,6 +1,3 @@
-"""
-[General Configuration Params]
-"""
 from os import environ, path
 from dotenv import load_dotenv
 
