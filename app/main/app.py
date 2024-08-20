@@ -9,7 +9,7 @@ from app.main.resources.user_resource import api
 from flask_swagger import swagger
 
 from flask_cors import CORS
-
+# CORS(api)
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 
@@ -19,26 +19,20 @@ app.url_map.strict_slashes = False
 
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace(
-        "postgres://", "postgresql://")
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url.replace(
+        "postgres://", "postgresql://"
+    )
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
-from flask import Blueprint
+from app.main.resources import blueprint
 
-example_blueprint = Blueprint('example_blueprint', __name__)
+app.register_blueprint(blueprint)
 
-@example_blueprint.route('/')
-def index():
-    return "This is an example app"
 
-app.register_blueprint(example_blueprint)
-
-#CORS(api)
-
-if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 3001))
-    app.run(host='0.0.0.0', port=PORT, debug=True)
+if __name__ == "__main__":
+    PORT = int(os.environ.get("PORT", 3001))
+    app.run(host="0.0.0.0", port=PORT, debug=True)

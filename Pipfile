@@ -12,10 +12,10 @@ init="flask db init"
 migrate="flask db migrate"
 upgrade="flask db upgrade"
 downgrade="flask db downgrade"
+ruff-check="ruff check"
+ruff-format="ruff format"
 reset_db="bash reset_migrations.bash"
 insert-test-users="flask insert-test-users 5"
-
-
 
 [packages]
 flask = "*"
@@ -33,8 +33,7 @@ gunicorn = "*"
 mysqlclient = "*"
 flask-admin = "*"
 typing-extensions = "*"
-
-
+ruff = "*"
 
 [dev-packages]
 pytest-cov = "==3.*"

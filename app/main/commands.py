@@ -1,11 +1,10 @@
-
 import click
 from app.main.modelss import db, User
 
+
 def setup_commands(app):
-    
-    @app.cli.command("insert-test-users") # name of our command
-    @click.argument("count") # argument of out command
+    @app.cli.command("insert-test-users")  # name of our command
+    @click.argument("count")  # argument of out command
     def insert_test_users(count):
         print("Creating test users")
         for x in range(1, int(count) + 1):
