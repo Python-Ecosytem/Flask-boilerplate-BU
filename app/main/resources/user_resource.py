@@ -1,10 +1,9 @@
+from typing import Dict, Tuple
 from flask import request
 from flask_restx import Resource
-
 from app.main.util.decorator import admin_token_required
-from ..util.dto import UserDto
+from app.main.Dtos.UserDto import UserDto
 from ..service.user_service import save_new_user, get_all_users, get_a_user
-from typing import Dict, Tuple
 
 api = UserDto.api
 _user = UserDto.user
@@ -44,3 +43,23 @@ class User(Resource):
 
 
 
+"""
+This module takes care of starting the API Server, Loading the DB and Adding the endpoints
+"""
+from flask import Flask, request, jsonify, url_for, Blueprint
+from app.main.utils import APIException
+from flask_cors import CORS
+
+api = Blueprint('api', __name__)
+
+CORS(api)
+
+
+@api.route('/hello', methods=['POST', 'GET'])
+def handle_hello():
+
+    response_body = {
+        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+    }
+
+    return jsonify(response_body), 200

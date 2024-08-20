@@ -1,7 +1,7 @@
 import unittest
 
 from app.main import db
-from app.main.model.blacklist import BlacklistToken
+from app.main.models.blacklist import BlacklistToken
 import json
 from app.test.base import BaseTestCase
 

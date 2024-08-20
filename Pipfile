@@ -11,12 +11,19 @@ start="flask run -p 3000 -h 0.0.0.0"
 init="flask db init"
 migrate="flask db migrate"
 upgrade="flask db upgrade"
+downgrade="flask db downgrade"
+reset_db="bash reset_migrations.bash"
+insert-test-users="flask insert-test-users 5"
+
+
 
 [packages]
+flask = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-swagger = "*"
+Flask-Bcrypt = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 mysql-connector-python = "*"
@@ -24,6 +31,9 @@ flask-cors = "*"
 gunicorn = "*"
 mysqlclient = "*"
 flask-admin = "*"
+typing-extensions = "*"
+
 
 
 [dev-packages]
+pytest-cov = "==3.*"
