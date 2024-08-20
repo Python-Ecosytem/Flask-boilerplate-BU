@@ -1,7 +1,7 @@
 import uuid
 import datetime
 from app.main.models.database import db
-from app.main.models.user import User
+from app.main.models.User import User
 from typing import Dict, Tuple
 
 

@@ -3,14 +3,18 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from app.main.models.database import db
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_restx import Resource, Api
 
-from app.main.routes import api
+from app.main.resources.user_resource import api
 from flask_swagger import swagger
+
+from flask_cors import CORS
 
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 
 app = Flask(__name__)
+
 app.url_map.strict_slashes = False
 
 db_url = os.getenv("DATABASE_URL")
@@ -23,9 +27,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
+from flask import Blueprint
 
-app.register_blueprint(api, url_prefix='/api')
+example_blueprint = Blueprint('example_blueprint', __name__)
 
+@example_blueprint.route('/')
+def index():
+    return "This is an example app"
+
+app.register_blueprint(example_blueprint)
+
+#CORS(api)
 
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
