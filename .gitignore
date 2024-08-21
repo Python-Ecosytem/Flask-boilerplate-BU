@@ -1,4 +1,4 @@
-.env
+#.env
 .venv
 database.database
 database.db
@@ -49,7 +49,7 @@ env
 env*
 
 # Env Vars
-*.env*
+#*.env*
 
 .webassets-cache
 *.cache
@@ -152,7 +152,7 @@ celerybeat-schedule
 *.sage.py
 
 # dotenv
-.env
+#.env
 
 # virtualenv
 .venv

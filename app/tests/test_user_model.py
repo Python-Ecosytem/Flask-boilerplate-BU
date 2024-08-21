@@ -8,7 +8,7 @@ class TestUserModel:
     def test_1(self):
         user = User(
             email="test@test.com",
-            password="test",
+            password="test",  # noqa: S106
         )
         db.session.add(user)
         db.session.commit()
