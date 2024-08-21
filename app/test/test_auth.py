@@ -9,9 +9,7 @@ from app.test.base import BaseTestCase
 def register_user(self):
     return self.client.post(
         "/user/",
-        data=json.dumps(
-            dict(email="joe@gmail.com", username="username", password="123456")
-        ),
+        data=json.dumps(dict(email="joe@gmail.com", username="username", password="123456")),
         content_type="application/json",
     )
 
@@ -101,8 +99,7 @@ class TestAuthBlueprint(BaseTestCase):
             response = self.client.post(
                 "/auth/logout",
                 headers=dict(
-                    Authorization="Bearer "
-                    + json.loads(resp_login.data.decode())["Authorization"]
+                    Authorization="Bearer " + json.loads(resp_login.data.decode())["Authorization"]
                 ),
             )
             data = json.loads(response.data.decode())
@@ -139,15 +136,12 @@ class TestAuthBlueprint(BaseTestCase):
             response = self.client.post(
                 "/auth/logout",
                 headers=dict(
-                    Authorization="Bearer "
-                    + json.loads(resp_login.data.decode())["Authorization"]
+                    Authorization="Bearer " + json.loads(resp_login.data.decode())["Authorization"]
                 ),
             )
             data = json.loads(response.data.decode())
             self.assertTrue(data["status"] == "fail")
-            self.assertTrue(
-                data["message"] == "Token blacklisted. Please log in again."
-            )
+            self.assertTrue(data["message"] == "Token blacklisted. Please log in again.")
             self.assertEqual(response.status_code, 401)
 
 
