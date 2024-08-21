@@ -17,7 +17,7 @@ elif ENV == "development":
 
 
 postgres_local_base = os.getenv("DATABASE_URL", None)
-basedir = os.path.abspath(os.path.dirname(__file__))
+rootdir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 
 class Config:
@@ -29,14 +29,14 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "appDev.db")
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(rootdir, "appDev.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class TestsConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "appTests.db")
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(rootdir, "appTests.db")
     TESTING = True
     DEBUG = True
 

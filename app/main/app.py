@@ -11,7 +11,7 @@ from app.main.resources import blueprint
 from .config_env import init_env
 
 
-def create_app(config):
+def create_app(config=None):
     app = Flask(__name__)
     init_env(app, config)
     app.url_map.strict_slashes = False
