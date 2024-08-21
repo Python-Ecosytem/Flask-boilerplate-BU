@@ -2,8 +2,11 @@ import os
 
 from dotenv import load_dotenv
 
+
 # Load the default .env file
-load_dotenv()
+# load_dotenv()
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, ".env"))
 
 
 ENV = os.getenv("FLASK_ENV", "development")
@@ -32,7 +35,6 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(rootdir, "appDev.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class TestsConfig(Config):
