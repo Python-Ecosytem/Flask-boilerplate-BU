@@ -52,7 +52,7 @@ def init_env(app):
         app.config.from_object("app.main.config_env.ProductionConfig")
     elif ENV == "development":
         app.config.from_object("app.main.config_env.DevelopmentConfig")
-    elif ENV == "testing":
+    elif ENV == "tests":
         app.config.from_object("app.main.config_env.TestsConfig")
     else:
         app.config.from_object("app.main.config_env.Config")
