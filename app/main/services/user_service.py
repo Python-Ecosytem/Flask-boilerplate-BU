@@ -1,11 +1,11 @@
-import uuid
 import datetime
+import uuid
+
 from app.main.models.database import db
 from app.main.models.User import User
-from typing import Dict, Tuple
 
 
-def save_new_user(data: Dict[str, str]) -> Tuple[Dict[str, str], int]:
+def save_new_user(data: dict[str, str]) -> tuple[dict[str, str], int]:
     user = User.query.filter_by(email=data["email"]).first()
     if not user:
         new_user = User(

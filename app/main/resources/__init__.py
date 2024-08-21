@@ -1,5 +1,6 @@
-from flask_restx import Api
 from flask import Blueprint
+from flask_restx import Api
+
 from .user_resource import api as user_ns
 
 blueprint = Blueprint("api", __name__, url_prefix="/api")

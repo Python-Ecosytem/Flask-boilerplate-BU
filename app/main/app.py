@@ -1,16 +1,13 @@
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
-from app.main.models.database import db
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_restx import Resource, Api
 
-from app.main.extenstions.setup_admin import setup_admin
+from flask import Flask
+from flask_migrate import Migrate
+
 from app.main.extenstions.commands import setup_commands
-from app.main.resources.user_resource import api
-from flask_swagger import swagger
+from app.main.extenstions.setup_admin import setup_admin
+from app.main.models.database import db
 from app.main.resources import blueprint
-from flask_cors import CORS
+
 # CORS(api)
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
