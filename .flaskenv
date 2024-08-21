@@ -1,0 +1,3 @@
+FLASK_APP=demo
+FLASK_ENV=production
+FLASK_RUN_PORT=8080
