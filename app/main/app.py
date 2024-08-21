@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restx import Resource, Api
 
-# from app.main.extenstions.setup_admin import setup_admin
+from app.main.extenstions.setup_admin import setup_admin
 from app.main.extenstions.commands import setup_commands
 from app.main.resources.user_resource import api
 from flask_swagger import swagger
@@ -34,7 +34,7 @@ db.init_app(app)
 app.register_blueprint(blueprint)
 
 setup_commands(app)
-# setup_admin(app)
+setup_admin(app)
 
 
 if __name__ == "__main__":

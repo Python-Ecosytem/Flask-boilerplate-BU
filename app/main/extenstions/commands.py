@@ -1,4 +1,6 @@
 import click
+from app.main.models.database import db
+from app.main.models.User import User
 
 
 def setup_commands(app):
@@ -16,7 +18,3 @@ def setup_commands(app):
             print("User: ", user.email, " created.")
 
         print("All test users created")
-
-    @app.cli.command("insert-test-data")
-    def insert_test_data():
-        pass
