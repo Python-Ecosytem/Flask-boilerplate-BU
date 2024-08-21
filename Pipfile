@@ -9,7 +9,7 @@ python_version = "3.10"
 [scripts]
 start="flask run -p 3000 -h 0.0.0.0"
 start-debug="flask run -p 3000 -h 0.0.0.0 --debug"
-test="pytest  "
+test="pytest --cov "
 init="flask db init"
 migrate="flask db migrate"
 upgrade="flask db upgrade"

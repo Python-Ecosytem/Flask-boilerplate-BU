@@ -47,7 +47,11 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
 
 
-def init_env(app):
+def init_env(app, config):
+    if config == "TESTING":
+        app.config.from_object("app.main.config_env.TestsConfig")
+        return
+
     if ENV == "production":
         app.config.from_object("app.main.config_env.ProductionConfig")
     elif ENV == "development":

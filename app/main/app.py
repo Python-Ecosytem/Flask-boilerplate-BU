@@ -11,9 +11,9 @@ from app.main.resources import blueprint
 from .config_env import init_env
 
 
-def create_app():
+def create_app(config):
     app = Flask(__name__)
-    init_env(app)
+    init_env(app, config)
     app.url_map.strict_slashes = False
     Migrate(app, db, compare_type=True)
     db.init_app(app)
