@@ -6,15 +6,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-ENV = os.getenv("FLASK_ENV", "default")
+ENV = os.getenv("FLASK_ENV", "development")
 
 if ENV == "production":
-    load_dotenv("./app/main/.production.env")
-    ENV = os.getenv("DATABASE_URL", "DATABASE_URL_default")
+    load_dotenv(".env.production")
 elif ENV == "testing":
-    load_dotenv(".testing.env")
+    load_dotenv(".env.testing")
 elif ENV == "development":
-    load_dotenv(".development.env")
+    load_dotenv(".env.development")
 
 
 postgres_local_base = os.getenv("DATABASE_URL", None)
