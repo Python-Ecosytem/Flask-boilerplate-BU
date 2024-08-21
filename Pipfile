@@ -36,8 +36,8 @@ mysqlclient = "*"
 flask-admin = "*"
 typing-extensions = "*"
 
-
 [dev-packages]
+Flask-Testing = "*"
 pytest-cov = "==3.*"
 pre-commit = "*"
 ruff = "*"
