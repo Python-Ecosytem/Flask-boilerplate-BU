@@ -9,14 +9,15 @@ load_dotenv()
 ENV = os.getenv("FLASK_ENV", "default")
 
 if ENV == "production":
-    load_dotenv(".production.env")
+    load_dotenv("./app/main/.production.env")
+    ENV = os.getenv("DATABASE_URL", "DATABASE_URL_default")
 elif ENV == "testing":
     load_dotenv(".testing.env")
 elif ENV == "development":
     load_dotenv(".development.env")
 
 
-postgres_local_base = os.environ["DATABASE_URL"]
+postgres_local_base = os.getenv("DATABASE_URL", None)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
