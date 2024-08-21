@@ -8,10 +8,12 @@ from app.test.base import BaseTestCase
 class TestUserModel(BaseTestCase):
     def test_1(self):
         user = User(
-            email="test@test.com",
-            password="test",  # noqa: S106
+            email="user@mail.org",
+            password="password",  # noqa: S106
+            is_active=True,
         )
-
+        db.session.add(user)
+        db.session.commit()
         self.assertTrue(True)
 
 
