@@ -13,7 +13,6 @@ from .config_env import init_env
 app = Flask(__name__)
 init_env(app)
 app.url_map.strict_slashes = False
-
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 

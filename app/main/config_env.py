@@ -11,7 +11,7 @@ ENV = os.getenv("FLASK_ENV", "development")
 if ENV == "production":
     load_dotenv(".env.production")
 elif ENV == "testing":
-    load_dotenv(".env.testing")
+    load_dotenv(".env.tests")
 elif ENV == "development":
     load_dotenv(".env.development")
 
@@ -29,13 +29,14 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "appdev.db")
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "appDev.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-class TestingConfig(Config):
+class TestsConfig(Config):
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "appTests.db")
     TESTING = True
     DEBUG = True
 
@@ -52,6 +53,6 @@ def init_env(app):
     elif ENV == "development":
         app.config.from_object("app.main.config_env.DevelopmentConfig")
     elif ENV == "testing":
-        app.config.from_object("app.main.config_env.TestingConfig")
+        app.config.from_object("app.main.config_env.TestsConfig")
     else:
         app.config.from_object("app.main.config_env.Config")

@@ -15,8 +15,8 @@ migrate="flask db migrate"
 upgrade="flask db upgrade"
 downgrade="flask db downgrade"
 ruff-check="ruff check"
-ruff-format="ruff format"
-reset_db="bash reset_migrations.bash"
+format="ruff format"
+reset_db="bash utils/reset_migrations.bash"
 insert-test-users="flask insert-test-users 5"
 
 [packages]
