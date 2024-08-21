@@ -1,5 +1,4 @@
 import click
-from app.main.modelss import db, User
 
 
 def setup_commands(app):
