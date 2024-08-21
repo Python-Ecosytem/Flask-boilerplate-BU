@@ -9,8 +9,7 @@ python_version = "3.10"
 [scripts]
 start="flask run -p 3000 -h 0.0.0.0"
 start-debug="flask run -p 3000 -h 0.0.0.0 --debug"
-#start-dev="FLASK_ENV=development flask run -p 3000 -h 0.0.0.0"
-#start-prod="export FLASK_ENV=production && flask run -p 3000 -h 0.0.0.0"
+test="pytest  "
 init="flask db init"
 migrate="flask db migrate"
 upgrade="flask db upgrade"
@@ -36,6 +35,7 @@ gunicorn = "*"
 mysqlclient = "*"
 flask-admin = "*"
 typing-extensions = "*"
+
 
 [dev-packages]
 pytest-cov = "==3.*"

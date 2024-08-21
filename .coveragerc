@@ -1,11 +1,6 @@
 [run]
 branch = True
-include = appname/*
-omit =
-    *static*
-    *templates*
-    *settings*
-    *manage.py
+include = app/
 
 [report]
 # Regexes for lines to exclude from consideration
