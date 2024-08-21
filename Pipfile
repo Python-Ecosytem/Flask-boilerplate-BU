@@ -33,7 +33,9 @@ gunicorn = "*"
 mysqlclient = "*"
 flask-admin = "*"
 typing-extensions = "*"
-ruff = "*"
+pre-commit = "*"
+
 
 [dev-packages]
 pytest-cov = "==3.*"
+ruff = "*"

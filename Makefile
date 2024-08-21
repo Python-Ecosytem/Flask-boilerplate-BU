@@ -36,20 +36,10 @@ tests:
 
 lint:
 	flake8 --exclude=env .
-	
-	
+
+
 run:
 	. venv/bin/activate; \
 	python manage.py run
 
 all: clean install tests run
-
-
-
-
-
-
-
-
-
-

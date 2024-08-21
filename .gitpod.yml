@@ -9,7 +9,7 @@ ports:
       visibility: public
 tasks:
   - init: >
-      (cp -n .env.example .env || true) && 
+      (cp -n .env.example .env || true) &&
       pipenv install &&
       psql -U gitpod -c 'CREATE DATABASE example;' &&
       psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d example &&
@@ -18,4 +18,3 @@ tasks:
       python docs/assets/welcome.py
     command: >
         pipenv run start;
-
