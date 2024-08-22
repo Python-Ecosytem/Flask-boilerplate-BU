@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_cors import CORS
 from flask_migrate import Migrate
 
 from app.main.extenstions.commands import setup_commands
@@ -20,6 +21,7 @@ def create_app(config=None):
     app.register_blueprint(api_blueprint)
     setup_commands(app)
     setup_admin(app)
+    CORS(app)
     return app
 
 
