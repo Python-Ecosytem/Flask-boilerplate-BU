@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from app.main.extenstions.commands import setup_commands
 from app.main.extenstions.setup_admin import setup_admin
 from app.main.models.database import db
-from app.main.resources import blueprint
+from app.main.resources import api_blueprint
 
 from .config_env import init_env
 
@@ -17,7 +17,7 @@ def create_app(config=None):
     app.url_map.strict_slashes = False
     Migrate(app, db, compare_type=True)
     db.init_app(app)
-    app.register_blueprint(blueprint)
+    app.register_blueprint(api_blueprint)
     setup_commands(app)
     setup_admin(app)
     return app

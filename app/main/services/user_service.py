@@ -9,11 +9,9 @@ def save_new_user(data: dict[str, str]) -> tuple[dict[str, str], int]:
     user = User.query.filter_by(email=data["email"]).first()
     if not user:
         new_user = User(
-            public_id=str(uuid.uuid4()),
             email=data["email"],
-            username=data["username"],
             password=data["password"],
-            registered_on=datetime.datetime.utcnow(),
+            is_active=True
         )
         save_changes(new_user)
     else:
@@ -28,8 +26,9 @@ def get_all_users():
     return User.query.all()
 
 
-def get_a_user(public_id):
-    return User.query.filter_by(public_id=public_id).first()
+def get_a_user_by_id(user_id):
+    
+    return User.query.filter_by(id=user_id).first()
 
 
 def save_changes(data: User) -> None:
