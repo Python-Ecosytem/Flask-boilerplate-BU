@@ -9,6 +9,5 @@ class UserDto:
             "id": fields.String(description="user Identifier"),
             "email": fields.String(required=True, description="user email address"),
             "password": fields.String(required=True, description="user password"),
-            
         },
     )

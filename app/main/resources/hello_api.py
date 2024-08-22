@@ -1,5 +1,3 @@
-
-
 @api.route("/hello")
 def handle_hello():
     response_body = {"Welcome message": "hello"}
