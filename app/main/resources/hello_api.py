@@ -1,5 +1,11 @@
-@api.route("/hello")
-def handle_hello():
-    response_body = {"Welcome message": "hello"}
+from flask import jsonify
+from flask_restx import Namespace, Resource
 
-    return jsonify(response_body), 200
+api = Namespace("hello", "Namespace Description")
+
+
+@api.route("")
+class Hello(Resource):
+    def get(self):
+        response_body = {"Welcome message": "hello"}
+        return jsonify(response_body)
